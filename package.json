@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/felixha00/rate-my-landlord-webapp/issues"
   },
-  "homepage": "https://github.com/felixha00/rate-my-landlord-webapp#readme"
+  "homepage": "https://github.com/felixha00/rate-my-landlord-webapp#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1"
+  }
 }
