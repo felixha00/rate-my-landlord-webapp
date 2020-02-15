@@ -69,30 +69,25 @@ function placeMarker(data){
 
 
       var contentString = `
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+      .checked {
+        color: orange;
+      }
+      </style>
       <div class = m-4>
-      <h3>Thomas Hong<h3>
-      <h6 class="mb-3">${data.formatted_address}</h6>
-      <p class="mb-4">We provide marketing services to startups and small businesses to looking for a partner for their digital media, design-dev, lead generation</p>
-
-      <span class="h5 mb-4">Let's Check what we do actually :</span>
-      <ul class="about-list2 my-4">
-          <li class="mb-2"><i class="icofont icofont-check-circled"></i> Best Analytics Audits to your site in specific niche</li>
-
-          <li class="mb-2">
-              <i class="icofont icofont-check-circled"> </i> Modern Keyword Analysis to keep up to date
-          </li>
-
-          <li class="mb-2">
-              <i class="icofont icofont-check-circled"> </i> More quality content, social networking and relative sharing
-          </li>
-
-          <li class="mb-2">
-              <i class="icofont icofont-check-circled"> </i> Social networking and relative sharing More quality content, 
-          </li>
-      </ul>
+      <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+      <h3 class="mt-3">Thomas Hong<h3>
+      <h6 class="mb-3 border-bottom pb-2">${data.formatted_address}</h6>
+      <button type="moreInfo" class="btn btn-primary" type="button">More Info</button>
+      
       <div>
-    
-  
+      
+      
       
       
       `;
