@@ -1,13 +1,2 @@
 # rate-my-landlord-webapp
-HackTheValley 4 > COOL WEBAPP !
-
-⁣          🎈🎈  ☁️
-         🎈🎈🎈
- ☁️     🎈🎈🎈🎈
-        🎈🎈🎈🎈
-   ☁️    ⁣🎈🎈🎈
-           \|/
-           🏠   ☁️
-   ☁️         ☁️
-
-🌳🌹🏫🌳🏢🏢_🏢🏢🌳🌳
+HackTheValley 4
