@@ -12,10 +12,11 @@
       e.preventDefault();
 
       var location = document.getElementById('location-input').value;
+      var zip = document.getElementById('zipcode-input').value;
 
       axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
         params:{
-          address:location,
+          address:location+zip,
           key:'AIzaSyCqLAmRG0zNVBs_IBTdcIxJvlyXt4B6cM0'
         }
       })
@@ -25,7 +26,7 @@
 
         // Formatted Address
         var formattedAddress = response.data.results[0].formatted_address;
-        
+
         var formattedAddressOutput = `
           <ul class="list-group">
             <li class="list-group-item">${formattedAddress}</li>
@@ -44,10 +45,10 @@
 
         // Geometry
 
-        
+
         //var data = JSON.parse(response.data.results[0]);
 
-        placeMarker(response.data.results[0]);  
+        placeMarker(response.data.results[0]);
       })
       .catch(function(error){
         console.log(error);
@@ -76,20 +77,30 @@ function placeMarker(data){
       }
       </style>
       <div class = m-4>
-      <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
       <h3 class="mt-3">Thomas Hong<h3>
       <h6 class="mb-3 border-bottom pb-2">${data.formatted_address}</h6>
-      <button type="moreInfo" class="btn btn-primary" type="button">More Info</button>
       
-      <div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="submit" class="btn btn-primary" type="button">More Info</button>
+      <a href="add_review.html" ><button type="submit" class="btn btn-primary ml-2" type="button">Write a review</button></a>
+      </div>
+      <p class="pt-4"><b>Reviews</b></p>
+      <p>- Careless, irresponsible and tries to shift the blame to the tenants. 0/10 would not recommend. <i>-Tareq Assi </i></p>
+      <p>- This guy actually smells like a fat person's earflaps. Horrible.  <i>-Haley HR </i></p>
+      <p>- Wow bro, I know how to use MangoDs.  <i>-Lazeez Zakr </i> </p>
+      </div>
+      </div>
       
-      
-      
-      
+
+
+
+
+
       `;
 
     var infowindow = new google.maps.InfoWindow({
@@ -106,6 +117,8 @@ function placeMarker(data){
     infowindow.open(map, marker);
   });
 
-  
-}
 
+
+
+
+}
