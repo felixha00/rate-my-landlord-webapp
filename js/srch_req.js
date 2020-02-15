@@ -12,10 +12,11 @@
       e.preventDefault();
 
       var location = document.getElementById('location-input').value;
+      var zip = document.getElementById('zipcode-input').value;
 
       axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
         params:{
-          address:location,
+          address:location+zip,
           key:'AIzaSyCqLAmRG0zNVBs_IBTdcIxJvlyXt4B6cM0'
         }
       })
