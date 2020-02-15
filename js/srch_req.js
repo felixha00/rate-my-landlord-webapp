@@ -25,6 +25,7 @@
 
         // Formatted Address
         var formattedAddress = response.data.results[0].formatted_address;
+        
         var formattedAddressOutput = `
           <ul class="list-group">
             <li class="list-group-item">${formattedAddress}</li>
@@ -44,9 +45,9 @@
         // Geometry
 
         
-        var data = JSON.parse(response.data.results[0]);
+        //var data = JSON.parse(response.data.results[0]);
 
-        placeMarker(data);  
+        placeMarker(response.data.results[0]);  
       })
       .catch(function(error){
         console.log(error);
@@ -60,40 +61,48 @@ function placeMarker(data){
     var lat = data.geometry.location.lat;
     var lng = data.geometry.location.lng;
 
-    var pos = { lat: lat, lng: lng }
+    var myLatLng = { lat: lat, lng: lng }
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 17,
-        center: pos
+        center: myLatLng
       });
 
-      
-      var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">H</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-      'sandstone rock formation in the southern part of the '+
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
-      'rock caves and ancient paintings. Uluru is listed as a World '+
-      'Heritage Site.</p>'+
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
-      '</div>'+
-      '</div>';
 
-  var infowindow = new google.maps.InfoWindow({
+      var contentString = `
+      <div class = m-4>
+      <h3>Thomas Hong<h3>
+      <h6 class="mb-3">${data.formatted_address}</h6>
+      <p class="mb-4">We provide marketing services to startups and small businesses to looking for a partner for their digital media, design-dev, lead generation</p>
+
+      <span class="h5 mb-4">Let's Check what we do actually :</span>
+      <ul class="about-list2 my-4">
+          <li class="mb-2"><i class="icofont icofont-check-circled"></i> Best Analytics Audits to your site in specific niche</li>
+
+          <li class="mb-2">
+              <i class="icofont icofont-check-circled"> </i> Modern Keyword Analysis to keep up to date
+          </li>
+
+          <li class="mb-2">
+              <i class="icofont icofont-check-circled"> </i> More quality content, social networking and relative sharing
+          </li>
+
+          <li class="mb-2">
+              <i class="icofont icofont-check-circled"> </i> Social networking and relative sharing More quality content, 
+          </li>
+      </ul>
+      <div>
+    
+  
+      
+      
+      `;
+
+    var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
 
   var marker = new google.maps.Marker({
-    position: pos,
+    position: myLatLng,
     map: map,
     title: "Hello World!"
   });
