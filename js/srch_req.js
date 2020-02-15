@@ -42,29 +42,35 @@
         addressComponentsOutput += '</ul>';
 
         // Geometry
-        var lat = response.data.results[0].geometry.location.lat;
-        var lng = response.data.results[0].geometry.location.lng;
+
         
-        placeMarker(lat,lng);  
+        var data = JSON.parse(response.data.results[0]);
+
+        placeMarker(data);  
       })
       .catch(function(error){
         console.log(error);
       });
     }
 
-function placeMarker(lat, lng){
-    var myLatLng = { lat: lat, lng: lng }
+
+
+function placeMarker(data){
+
+    var lat = data.geometry.location.lat;
+    var lng = data.geometry.location.lng;
+
+    var pos = { lat: lat, lng: lng }
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 17,
-        center: myLatLng
+        center: pos
       });
 
-    
-
+      
       var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<h1 id="firstHeading" class="firstHeading">H</h1>'+
       '<div id="bodyContent">'+
       '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
       'sandstone rock formation in the southern part of the '+
@@ -87,10 +93,11 @@ function placeMarker(lat, lng){
   });
 
   var marker = new google.maps.Marker({
-    position: myLatLng,
+    position: pos,
     map: map,
     title: "Hello World!"
   });
+
   marker.addListener('click', function() {
     infowindow.open(map, marker);
   });
