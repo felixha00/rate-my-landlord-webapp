@@ -86,8 +86,8 @@ function placeMarker(data){
       <h6 class="mb-3 border-bottom pb-2">${data.formatted_address}</h6>
       <button type="moreInfo" class="btn btn-primary" type="button">More Info</button>
       <div>
-      <p><b>Reviews</b></p>
-      <p>- Carless,irresponsible and tries to shift the blame to the tenants. 0/10 would not recommend. <i>-Tareq Assi </i></p>
+      <p class="pt-4"><b>Reviews</b></p>
+      <p>- Careless, irresponsible and tries to shift the blame to the tenants. 0/10 would not recommend. <i>-Tareq Assi </i></p>
       <p>- This guy actually smells like a fat person's earflaps. Horrible.  <i>-Haley HR </i></p>
       <p>- Wow bro, I know how to use MangoDs.  <i>-Lazeez Zakr </i> </p>
       </div>
