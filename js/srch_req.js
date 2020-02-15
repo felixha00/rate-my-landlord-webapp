@@ -77,15 +77,18 @@ function placeMarker(data){
       }
       </style>
       <div class = m-4>
-      <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
       <h3 class="mt-3">Thomas Hong<h3>
       <h6 class="mb-3 border-bottom pb-2">${data.formatted_address}</h6>
-      <button type="moreInfo" class="btn btn-primary" type="button">More Info</button>
-      <div>
+      
+      <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="submit" class="btn btn-primary" type="button">More Info</button>
+      <a href="add_review.html" ><button type="submit" class="btn btn-primary ml-2" type="button">Write a review</button></a>
+      </div>
       <p class="pt-4"><b>Reviews</b></p>
       <p>- Careless, irresponsible and tries to shift the blame to the tenants. 0/10 would not recommend. <i>-Tareq Assi </i></p>
       <p>- This guy actually smells like a fat person's earflaps. Horrible.  <i>-Haley HR </i></p>
@@ -113,6 +116,9 @@ function placeMarker(data){
   marker.addListener('click', function() {
     infowindow.open(map, marker);
   });
+
+
+
 
 
 }
