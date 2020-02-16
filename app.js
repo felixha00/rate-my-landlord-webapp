@@ -7,6 +7,7 @@ const express = require("express");
       Review =  require("./models/review")
       NodeGeocoder = require('node-geocoder')
 
+
 var options = {
   provider: 'google',
   httpAdapter: 'https',
@@ -15,6 +16,7 @@ var options = {
 };
 var geocoder = NodeGeocoder(options);      
 app = express();
+app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
 mongoose.connect("mongodb+srv://"+process.env.MYMONGONAME+":"+process.env.my_mongo_password+"@cluster0-bb19c.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true }).then(() =>{
   console.log("Connected to DB")
@@ -55,7 +57,6 @@ app.post("/landlords", function(req, res){
               }
               else{
                 console.log(newReview)
-                newReview.save()
                 newlyCreated.reviews.push(newReview)
                 newlyCreated.save()
               }
