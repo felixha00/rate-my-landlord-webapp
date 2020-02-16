@@ -28,7 +28,14 @@ app.get("/", function(req, res){
   res.redirect("/landlords")
 })
 app.get("/landlords", function(req, res){
-  res.sendFile(path.join(__dirname+"/map.html"))
+  Landlord.find({}).populate("reviews").exec(function(err, foundLandlords){
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.render("map.ejs",{landlords:foundLandlords})
+    }
+  })
 })
 app.get("/landlords/new", function(req, res){
   res.sendFile(path.join(__dirname+"/views/landlords/add_review.html"))
@@ -125,6 +132,6 @@ app.post("/landlords/:id/reviews",function(req, res){
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
-app.listen(3000, (req, res)=>{
+app.listen(process.env.PORT, (req, res)=>{
   console.log("hello world")
 })
