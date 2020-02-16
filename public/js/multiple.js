@@ -110,7 +110,6 @@ function placeMarker(data){
   var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
-    title: `${data.formatted_address}`
   });
 
   marker.addListener('click', function() {

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose")
-var reviewSchema = new mongoose.Schema(
+var reviewSchema = mongoose.Schema(
   {
     text: String,
     rating: Number,

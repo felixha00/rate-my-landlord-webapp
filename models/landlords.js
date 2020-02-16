@@ -7,13 +7,13 @@ var landlordSchema = new mongoose.Schema({
   lng: Number,
   reviews:
   [
-    {
-      id: {
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Review"
       }
-    }
   ],
+  Total_rating: Number,
+  Total_count: Number,
   rating: Number
 })
 

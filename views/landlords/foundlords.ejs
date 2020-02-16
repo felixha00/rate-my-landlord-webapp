@@ -4,9 +4,6 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet"> 
-    
-    
-    <title>Rate my Landlord</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
   </head>
@@ -27,36 +24,59 @@
         </div>
       </div>
   </nav>
-    <div class="container mt-4"> 
-      <form action="/landlords" method="POST">
-      <h3 class="text-center p-2"> - Add a new review - </h3>
-      <div class="form-group">
-        <label for="exampleAddress">Address: </label>
-        <input type="text" class="form-control" name="address" aria-describedby="Address" placeholder="Enter Address">
-         
+  <style>
+    .col-3{
+      border: 1px solid black;
+    }
+    .content{
+      color: black;
+    }
+    .col-6{
+      border: 1px solid black;
+    }
+  </style>
+  <div class="container" style="margin-top: 30px; float: center;">
+    <div class="row">
+      <div class="col-3">
+        Name
       </div>
-      <div class="form-group">
-        <label for="exampleLandlord">Landlord: </label>
-        <input type="text" class="form-control" name="landlord" placeholder="Landlord's name">
+      <div class="col-3">
+        Address
       </div>
-      <div class="form-group">
-          <label for="exampleReview">Review: </label>
-          <textarea class="form-control" name="reviewss[text]" rows="8" placeholder="Write your review here!"></textarea>
-        </div>
-      
-       <div class="form-group">
-        <label for="exampleFormControlSelect1">Overall Satification </label>
-        <select name="reviewss[rating]" class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+      <div class="col-6">
+        Rating
       </div>
-
-        <br><button type="submit" class="btn btn-primary mt-4">Submit</button>
-      </form>
+    </div>
+    <% lords.forEach(function(lord){ %>
+    <tr>
+      <div class="row">
+        <td >
+          <div class="col-3">
+            <a href="/landlords/<%=lord._id%>"><span class="content"><%=lord.name%></span></a>
+          </div>
+        </td >
+        <td>
+          <div class="col-3" style="border: 1px solid black;">
+            <span class="content"><%=lord.location%></span>
+          </div>
+        </td>
+        <td>
+          <% lord.reviews.forEach(function(corse){ %>
+            <% var rating = 0 %>
+            <% var count = 0 %>
+            <% rating += corse.rating %>
+            <% lord.Total_rating = rating %>
+            <% count++ %>
+            <% lord.Total_count = count %>
+          <% }) %>
+          <div class="col-6" style="border: 1px solid black;">
+            <span class="content"><% lord.rating = lord.Total_rating/lord.Total_count %></span>
+            <span class="content"><%= lord.rating %></span>
+          </div>
+        </td>
+      </div>
+    </tr>  
+    <% }) %>
   </div>
 
 

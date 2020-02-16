@@ -21,22 +21,9 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/landlord/new">New Review</a>
+                <a class="nav-link" href="/landlords/new">Add Landlord</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-              </li>
+              
             </ul>
             
           </div>
@@ -59,13 +46,13 @@
                   </form>
             </div>
             <div class="col">
-              <form>
+              <form action="/landlords/results" method = "GET">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Enter a landlord's name:</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" name = "search" placeholder="Search">
                     <span class="input-group-btn">
-                         <button class="btn btn-primary" type="button">Find</button>
+                         <button class="btn btn-primary" type="submit">Find</button>
                     </span>
                  </div>
                 </div>     
