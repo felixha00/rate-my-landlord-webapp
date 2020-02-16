@@ -11,17 +11,21 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
       <a class="navbar-brand" href="/" style="font-weight: 900; font-size:30px;">RATE MY LANDLORD</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="/landlords/new">Add Landlord</a>
             </li>
+            
           </ul>
           
         </div>
@@ -43,7 +47,7 @@
     <a class="btn btn-success" href="/landlords/<%= landlord._id %>/reviews/new">Add New Review</a>
   </div>
   <h3>
-    See Reviews on <%=landlord.name %>(Rating: <%= landlord.rating %>)
+    See Reviews on <%=landlord.name %>(Rating: <%= landlord.rating.toFixed(1) %>)
   </h3>
 </div>
 
@@ -51,7 +55,7 @@
   <% landlord.reviews.forEach(function(corse){ %>
       <div class="alert alert-info">
         <%= corse.text %>
-        <span style="float: right;">Rating: <%= corse.rating.toFixed(1) %></span>
+        <span style="float: right;">Rating: <%= corse.rating %></span>
       </div>
   <% }) %>
   
@@ -70,7 +74,7 @@
       var contentString = `
         <strong>Name: <%= landlord.name %><br />
         Location: <%= landlord.location %><br />
-        Rating: <%= landlord.rating %></strong>
+        Rating: <%= landlord.rating.toFixed(1) %></strong>
       `
       var infowindow = new google.maps.InfoWindow({
         content: contentString

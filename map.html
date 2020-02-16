@@ -12,15 +12,18 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
         <a class="navbar-brand" href="/" style="font-weight: 900; font-size:30px;">RATE MY LANDLORD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="/landlords/new">Add Landlord</a>
               </li>
               
@@ -39,7 +42,7 @@
                         <input type="text" class="form-control" id="location-input" placeholder="Search" required ="true">
                         <input type="text" class="form-control" id="zipcode-input" placeholder="Postal Code">
                         <span class="input-group-btn">
-                             <button type="submit" class="btn btn-primary" type="button">Find</button>
+                             <button type="submit" style = "border-top-left-radius: 0; border-bottom-left-radius: 0;" class="btn btn-primary" type="button">Find</button>
                         </span>
                      </div>
                     </div>     
@@ -52,7 +55,7 @@
                   <div class="input-group">
                     <input type="text" class="form-control" name = "search" placeholder="Search">
                     <span class="input-group-btn">
-                         <button class="btn btn-primary" type="submit">Find</button>
+                         <button class="btn btn-primary" style = "border-top-left-radius: 0; border-bottom-left-radius: 0;" type="submit">Find</button>
                     </span>
                  </div>
                 </div>     
