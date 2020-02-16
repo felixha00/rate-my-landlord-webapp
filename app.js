@@ -37,6 +37,7 @@ app.get("/landlord/new", function(req, res){
 app.post("/landlords", function(req, res){
   var name = req.body.landlord
   var review = req.body.review
+  var rating = req.body.rating
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
       req.flash('error', 'Invalid address');
@@ -45,7 +46,7 @@ app.post("/landlords", function(req, res){
     var lat = data[0].latitude;
     var lng = data[0].longitude;
     var location = data[0].formattedAddress;
-    var newLandlord = {name: name, address: location, lat: lat, lng: lng};
+    var newLandlord = {name: name, address: location, lat: lat, lng: lng,rating: rating};
     // Create a new Landlord and save to DB
     Landlord.create(newLandlord, function(err, newlyCreated){
         if(err){
