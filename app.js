@@ -16,7 +16,7 @@ var options = {
 var geocoder = NodeGeocoder(options);      
 app = express();
 app.use(bodyParser.urlencoded({extended: true}))
-mongoose.connect("mongodb+srv://"+process.env.MYMONGONAME+":"+process.env.my_mongo_password+"@cluster0-bb19c.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true, useCreateIndex: true }).then(() =>{
+mongoose.connect("mongodb+srv://"+process.env.MYMONGONAME+":"+process.env.my_mongo_password+"@cluster0-bb19c.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true }).then(() =>{
   console.log("Connected to DB")
 }).catch(err=>{
     console.log("Error:", err.message)
@@ -28,19 +28,15 @@ app.get("/", function(req, res){
 app.get("/landlords", function(req, res){
   res.sendFile(path.join(__dirname+"/map.html"))
 })
-app.get("/about",function(req,res){
-  res.sendFile(path.join(__dirname+"/about.html"))
-})
 app.get("/landlord/new", function(req, res){
   res.sendFile(path.join(__dirname+"/views/landlords/add_review.html"))
 })
 app.post("/landlords", function(req, res){
   var name = req.body.landlord
-  var review = req.body.review
   var rating = req.body.rating
-  geocoder.geocode(req.body.location, function (err, data) {
+  var review = req.body.review
+  geocoder.geocode(req.body.address, function (err, data) {
     if (err || !data.length) {
-      req.flash('error', 'Invalid address');
       return res.redirect('back');
     }
     var lat = data[0].latitude;
@@ -53,12 +49,13 @@ app.post("/landlords", function(req, res){
             console.log(err);
         } else {
             //redirect back to Landlords page
-            Review.create(review, function(err, newReview){
+            Review.create({text: review, rating:rating}, function(err, newReview){
               if(err){
                 console.log(err)
               }
               else{
                 console.log(newReview)
+                newReview.save()
                 newlyCreated.reviews.push(newReview)
                 newlyCreated.save()
               }

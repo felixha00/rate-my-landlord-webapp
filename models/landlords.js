@@ -6,10 +6,12 @@ var landlordSchema = new mongoose.Schema({
   lat: Number,
   lng: Number,
   reviews:
-  {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Review"
-  },
+  [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review"
+    }
+  ],
   rating: Number
 })
 
