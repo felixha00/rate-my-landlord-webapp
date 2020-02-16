@@ -27,22 +27,35 @@
         </div>
       </div>
   </nav>
-<div id="map"></div>
-<div class="container" style="margin-top: 20px;">
+  <% var rating = 0 %>
+  <% var count = 0 %>
   <% landlord.reviews.forEach(function(corse){ %>
-    <% var rating = 0 %>
-    <% var count = 0 %>
     <% rating += corse.rating %>
     <% landlord.Total_rating = rating %>
     <% count++ %>
     <% landlord.Total_count = count %>
   <% }) %>
+  <span class="content"><% landlord.rating = landlord.Total_rating/landlord.Total_count %></span>
+<div class="container"></div>
+<div id="map"></div>
+<div class="container" style="margin-top: 20px;">
+  <div class="text-right">
+    <a class="btn btn-success" href="/landlords/<%= landlord._id %>/reviews/new">Add New Review</a>
+  </div>
+  <h3>
+    See Reviews on <%=landlord.name %>(Rating: <%= landlord.rating %>)
+  </h3>
+</div>
+
+<div class="container" style="margin-top: 20px;">
   <% landlord.reviews.forEach(function(corse){ %>
-      <div class="alert alert-info"><%= corse.text %></div>
+      <div class="alert alert-info">
+        <%= corse.text %>
+        <span style="float: right;">Rating: <%= corse.rating.toFixed(1) %></span>
+      </div>
   <% }) %>
   
 </div>
-
 
 <script>
   function initMap() {

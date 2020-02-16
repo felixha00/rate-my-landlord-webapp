@@ -91,7 +91,37 @@ app.get("/landlords/:id", function(req, res){
     }
   })
 })
-
+app.get("/landlords/:id/reviews/new", function(req, res){
+  Landlord.findById(req.params.id, function(err,foundLandlord){
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.render("./reviews/new.ejs", {landlord:foundLandlord })
+    }
+  })
+})
+app.post("/landlords/:id/reviews",function(req, res){
+  Landlord.findById(req.params.id,function(err, foundLandlord){
+    if(err){
+      console.log(err)
+    }
+    else{
+      Review.create(req.body.reviewss, function(err, newReview){
+        if(err){
+          console.log(err)
+        }
+        else{
+            console.log(newReview)
+            newReview.save()
+            foundLandlord.reviews.push(newReview)
+            foundLandlord.save()
+            res.redirect("/landlords/"+ foundLandlord._id )
+        }
+      })
+    }
+  })
+})
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
