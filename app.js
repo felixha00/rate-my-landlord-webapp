@@ -18,7 +18,7 @@ var geocoder = NodeGeocoder(options);
 app = express();
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
-mongoose.connect("mongodb+srv://zakerl:labeeb_1234@cluster0-bb19c.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true }).then(() =>{
+mongoose.connect("mongodb+srv://YOUR:KEY@cluster0-bb19c.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true }).then(() =>{
   console.log("Connected to DB")
 }).catch(err=>{
     console.log("Error:", err.message)

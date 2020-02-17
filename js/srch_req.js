@@ -106,11 +106,11 @@ function placeMarker(data){
     var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
- 
+
   var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
-    title: `${data.formatted_address}`
+    title: "Hello World!"
   });
 
   marker.addListener('click', function() {
